@@ -1,6 +1,6 @@
 const {performance} = require('perf_hooks');
 
-
+//Understand the problem
 //Function that takes two numbers and return their sum
 
 //O(1) Example
@@ -41,3 +41,53 @@ let t5 = performance.now();
 console.log(newSum(1027546222, 928882723654384738636683));
 let t6 = performance.now();
 console.log(`Time Elapsed: ${(t6 - t5) / 1000} seconds.`)
+
+//Use concrete examples
+//Function that takes in a string and returns counts of each character in a string
+
+function stringCount(str) {
+    return str.length
+}
+
+console.log(stringCount('House'));
+
+//Count occurence of each character in a string
+
+//Pseudo Code
+/*
+do something
+return an object with keys that are lowercase alphanumeric in a string; values should be counts of each character
+
+//Simpler
+make object to return at end
+loop over string, for each character
+    //if the char is a number/letter and is a key in object, add one to count
+    //if the char is not a number/letter and not a an object, add it and set value to 1
+    //if char is something (space, period, etc), don't do anything
+return object at end
+*/
+
+//Solution 1 
+
+function charCount(str) {
+    let newStr = str.toLowerCase().split('');
+    let count = 0;
+    for (let i = 0; i< newStr.length; i++) {
+        count = newStr.charAt[i];
+    }
+    return count;
+}
+
+console.log(charCount('House'));
+
+
+
+//Solution 2
+function charCount2(str) {
+    return str.split('').reduce((acc, char) => {
+      acc[char] = (acc[char] || 0) + 1;
+      return acc;
+    }, {});
+  }
+
+  console.log(charCount2('House'));
