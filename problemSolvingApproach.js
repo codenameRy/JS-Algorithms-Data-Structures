@@ -51,40 +51,43 @@ function stringCount(str) {
 
 console.log(stringCount('House'));
 
-//Count occurence of each character in a string
+//Function that takes a string and returns a count of each character in a string
 
 //Pseudo Code
-/*
-do something
-return an object with keys that are lowercase alphanumeric in a string; values should be counts of each character
 
-//Simpler
-make object to return at end
-loop over string, for each character
+// do something
+// return an object with keys that are lowercase alphanumeric in a string; values should be counts of each character
+
+//Solution 1
+function charCount1(str) {
+// make object to return at end
+    let result = {};
+// loop over string, for each character
+    for (let i = 0; i < str.length; i++) {
+    let char = str[i].toLowerCase();
     //if the char is a number/letter and is a key in object, add one to count
+    if (result[char] > 0) {
+        result[char]++;
+    } 
     //if the char is not a number/letter and not a an object, add it and set value to 1
-    //if char is something (space, period, etc), don't do anything
-return object at end
-*/
-
-//Solution 1 
-
-function charCount(str) {
-    let newStr = str.toLowerCase().split('');
-    let count = 0;
-    for (let i = 0; i< newStr.length; i++) {
-        count = newStr.charAt[i];
+    else {
+        result[char] = 1;
     }
-    return count;
+    //if char is something (space, period, etc), don't do anything
+}
+// return object at end
+return result;
 }
 
-console.log(charCount('House'));
+console.log(charCount1("hello"))
 
+
+//Solution 1 Refactored
 
 
 //Solution 2
 function charCount2(str) {
-    return str.split('').reduce((acc, char) => {
+    return str.toLowerCase().split('').reduce((acc, char) => {
       acc[char] = (acc[char] || 0) + 1;
       return acc;
     }, {});
