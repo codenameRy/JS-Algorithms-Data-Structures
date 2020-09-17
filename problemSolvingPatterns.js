@@ -1,6 +1,6 @@
 const {performance} = require('perf_hooks');
 
-//Frequency Counter Pattern
+//1 - Frequency Counter Pattern
 /*function called same, which accepts two arrays. The function should return true 
 if every value in the array has it's corresponding value squared in the second array. 
 The frequency of values must be the same.
@@ -43,7 +43,7 @@ console.log(same(arr1,arr2))
 let t1 = performance.now();
 console.log(`Time Elapsed: ${(t1 - t0) / 1000} seconds.`)
 
-//Solution 2 - Time Complexity O(n)
+//Solution 2 - Time Complexity O(N) 
 function same2(arr3, arr4){
     if(arr3.length !== arr4.length){
         return false;
@@ -71,7 +71,7 @@ function same2(arr3, arr4){
     console.log(frequencyCounter1)
     console.log(frequencyCounter2)
     return true
-}
+};
 
 arr3 = [1,3,4,1];
 arr4 = [1,9,16,1];
@@ -80,3 +80,74 @@ let t2 = performance.now();
 console.log(same2(arr3,arr4))
 let t3 = performance.now();
 console.log(`Time Elapsed: ${(t3 - t2) / 1000} seconds.`)
+
+//2 - Anagram
+/*Given two strings, write a function to determine if the second string 
+is an anagram of the first. An anagram is a word, phrase, or name formed 
+by rearranging the letters of another, such as cinema, formed from iceman
+*/
+
+/*Example
+validAnagram('', '') // true
+validAnagram('aaz', 'zza') // false
+validAnagram('anagram', 'nagaram') // true
+validAnagram("rat","car") // false) // false
+validAnagram('awesome', 'awesom') // false
+validAnagram('qwerty', 'qeywrt') // true
+validAnagram('texttwisttime', 'timetwisttext') // true
+*/
+
+//Solution 2 Function using Every Method Time Complexity O(N)
+function isAnagramx (str1,str2){
+    const arr1 = str1.toLowerCase().split('').sort();
+    const arr2 = str2.toLowerCase().split('').sort();
+    return arr1.every((value,index) => value === arr2[index])
+}
+
+let output2 = isAnagramx('texttwisttime', 'timetwisttext');
+
+
+//Performance Test
+let t4 = performance.now();
+console.log(`Anagram check ${output2}`);
+let t5 = performance.now();
+console.log(`Time Elapsed: ${(t5 - t4) / 1000} seconds.`)
+
+//Solution 3 Using Frequency Counter Pattern Time Complexity O(n) 
+
+function anagramChecker(anag1, anag2){
+    if(anag1.length !== anag2.length){
+        return false;
+    }
+    //Start with empty objects
+    let counter1 = {}
+    let counter2 = {}
+    //Loop over every object in the arrays. Add 1 or initialize to 1 with counter
+    for(let val of anag1){
+        counter1[val] = (counter1[val] || 0) + 1
+    }
+    for(let val of anag2){
+        counter2[val] = (counter2[val] || 0) + 1        
+    }
+//Check the power of 2 in counter2 to counter1. If not, return false
+    for(let key in counter1){
+        if(!(key in counter2)){
+            return false
+        }
+//Check the the frequency of power of 2 in counter2 to counter1. If not, return false
+        if(counter2[key] !== counter1[key]){
+            return false
+        }
+    }
+    console.log(counter1)
+    console.log(counter2)
+    return true
+};
+
+validAnagram = anagramChecker('qwerty', 'qeywrt');
+
+//Performance Test
+let t6 = performance.now();
+console.log(`Anagram check #2 ${validAnagram}`);
+let t7 = performance.now();
+console.log(`Time Elapsed: ${(t7 - t6) / 1000} seconds.`)
