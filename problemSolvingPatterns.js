@@ -104,12 +104,16 @@ function isAnagramx (str1,str2){
     return arr1.every((value,index) => value === arr2[index])
 }
 
-let output2 = isAnagramx('texttwisttime', 'timetwisttext');
+// wordA = 'texttwisttime';
+// wordB = 'timetwisttext';
+word1 = 'qwerty';
+word2 = 'qeywrt';
+// let output2 = isAnagramx('texttwisttime', 'timetwisttext');
 
 
 //Performance Test
 let t4 = performance.now();
-console.log(`Anagram check ${output2}`);
+console.log(`Anagram check ${isAnagramx(word1,word2)}`);
 let t5 = performance.now();
 console.log(`Time Elapsed: ${(t5 - t4) / 1000} seconds.`)
 
@@ -129,12 +133,12 @@ function anagramChecker(anag1, anag2){
     for(let val of anag2){
         counter2[val] = (counter2[val] || 0) + 1        
     }
-//Check the power of 2 in counter2 to counter1. If not, return false
+//Check if each character in counter2 to appears in counter1. If not, return false
     for(let key in counter1){
         if(!(key in counter2)){
             return false
         }
-//Check the the frequency of power of 2 in counter2 to counter1. If not, return false
+//Check the the frequency characters in counter2 to counter1. If not, return false
         if(counter2[key] !== counter1[key]){
             return false
         }
@@ -144,10 +148,11 @@ function anagramChecker(anag1, anag2){
     return true
 };
 
-validAnagram = anagramChecker('qwerty', 'qeywrt');
+word1 = 'qwerty';
+word2 = 'qeywrt';
 
 //Performance Test
 let t6 = performance.now();
-console.log(`Anagram check #2 ${validAnagram}`);
+console.log(`Anagram check #2 ${anagramChecker(word1,word2)}`);
 let t7 = performance.now();
 console.log(`Time Elapsed: ${(t7 - t6) / 1000} seconds.`)
