@@ -157,7 +157,7 @@ console.log(`Anagram check #2 ${anagramChecker(word1,word2)}`);
 let t7 = performance.now();
 console.log(`Time Elapsed: ${(t7 - t6) / 1000} seconds.`)
 
-//Multiple Pointers
+//3 - Multiple Pointers
 
 /*Write a function called sumZero which accepts a sorted array of 
 integers. The function should find the first pair where the sum is 0. 
@@ -208,4 +208,63 @@ let t12 = performance.now();
 console.log(sumZeroNew([-3,-2,-1,0,5,10])); //Undefined
 let t13 = performance.now();
 console.log(`Time Elapsed: ${(t13 - t12) / 1000} seconds.`)
+
+//Count Unique Characters
+
+/*Implement a function called countUniqueValues, which accepts a sorted array, 
+and counts the unique values in the array. There can be negative numbers in the 
+array, but it will always be sorted.
+
+Examples
+countUniqueValues([1,1,1,1,1,2]) // 2
+countUniqueValues([1,2,3,4,4,4,7,7,12,12,13]) // 7
+countUniqueValues([]) // 0
+countUniqueValues([-2,-1,-1,0,1]) // 4
+*/
+
+//Solution 1 - Frequency Counter Pattern For ... of and Object.keys
+function countUniqueValues(arr) {
+    //Create counter 
+    let valueCount = {};
+    //Loop through array with for ... of and count unique value
+    for (let num of arr) {
+        valueCount[num] = 1 + (valueCount[num] || 0);
+    }
+    // console.log(valueCount);
+    return Object.keys(valueCount).length;
+}
+
+//Performance Test
+let t14 = performance.now();
+console.log(countUniqueValues([12,2,3,4,4,4,7,7,12,12,13])) // 7
+let t15 = performance.now();
+console.log(`Time Elapsed: ${(t15 - t14) / 1000} seconds.`)
+
+
+
+//Solution 2 - Multiple Pointers Approach - Only works with a sorted array
+//Time Complexity O(N)
+//Store unique values at the beginning
+
+function countUniqueValuesNew(arr) {
+    //Counter variable i starts at the left
+    var i = 0;
+//Loop through array --> j starts at 2nd position index 1
+    for (let j = 1; j < arr.length; j++) {
+        //Compare index of i and j
+        if (arr[i] !== arr[j]) {
+            i++;
+            arr[i] = arr[j]
+        }
+        // console.log(i,j)
+    }
+    return i + 1;
+}
+
+
+//Performance Test
+let t16 = performance.now();
+console.log(countUniqueValuesNew([1,2,3,4,4,4,7,7,12,12,13])) // 7
+let t17 = performance.now();
+console.log(`Time Elapsed: ${(t17 - t16) / 1000} seconds.`)
 
