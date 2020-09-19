@@ -230,19 +230,41 @@ function countUniqueValues(arr) {
     for (let num of arr) {
         valueCount[num] = 1 + (valueCount[num] || 0);
     }
-    // console.log(valueCount);
+    console.log(valueCount);
     return Object.keys(valueCount).length;
 }
 
 //Performance Test
 let t14 = performance.now();
-console.log(countUniqueValues([12,2,3,4,4,4,7,7,12,12,13])) // 7
+console.log(countUniqueValues([1,2,3,4,4,4,7,7,12,12,13])) // 7
 let t15 = performance.now();
 console.log(`Time Elapsed: ${(t15 - t14) / 1000} seconds.`)
 
+//Solution 2 - Frequency Counter Pattern For loop and Object.keys
+function countUniqueValuesNew2(arr) {
+    //Create counter 
+    let valueCount = {};
+    //Loop through array with for ... of and count unique value
+    for (let i = 0; i < arr.length; i++) {
+        let charIndex = arr[i]
+        if (valueCount[charIndex] > 0) {
+            charIndex++
+        } else {valueCount[charIndex] = 1
+        }
+    }
+    console.log(valueCount);
+    return Object.keys(valueCount).length;
+}
+
+//Performance Test
+let t18 = performance.now();
+console.log(countUniqueValuesNew2([1,2,3,4,4,4,7,7,12,12,13])) // 7
+let t19 = performance.now();
+console.log(`Time Elapsed: ${(t19 - t18) / 1000} seconds.`)
 
 
-//Solution 2 - Multiple Pointers Approach - Only works with a sorted array
+
+//Solution 3 - Multiple Pointers Approach - Only works with a sorted array
 //Time Complexity O(N)
 //Store unique values at the beginning
 
