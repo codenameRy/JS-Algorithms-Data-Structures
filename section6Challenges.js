@@ -3,7 +3,8 @@ const {
 } = require('perf_hooks');
 
 //Coding Exercise 3: Frequency Counter - sameFrequency
-//Write a function called sameFrequency. Given two positive integers, find out if the two numbers have the same frequency of digits
+//Write a function called sameFrequency. Given two positive 
+//integers, find out if the two numbers have the same frequency of digits
 
 //Solution 1 - Time Complexity O(N)
 function sameFrequency(num1, num2) {
@@ -48,7 +49,8 @@ console.log(`Time Elapsed: ${(t7 - t6) / 1000} seconds.`)
 
 //Coding Exercise 4: Frequency Counter / Multiple Pointers - Are There Duplicates
 
-function areThereDuplicates(...arr) {
+//Solution 1 - Frequency County
+function areThereDuplicates(arr) {
     let counter = {};
     for (let char of arr) {
         if (!counter[char]) {
@@ -105,7 +107,7 @@ function averagePair(arr,num) {
     while (left < right) { //while loop
         let average  = (arr[left] + arr[right]) / 2; //Declare average variage
         if (average === num) { //Primary if statement if average equals num
-            return `${arr[left]} and ${arr[right]} are the average of ${num} }}` 
+            return `${arr[left]} and ${arr[right]} are the average of ${num}` 
             // return true;
         } else if (average > num) { //Else if average > num. Move pointer on right side to left
             right--;
@@ -116,8 +118,71 @@ function averagePair(arr,num) {
     return false;
 }
 
+//Performance
 let t10 = performance.now();
 console.log(`The average pair ${averagePair([1,3,3,5,6,7,10,12,19],8)}`);
 let t11 = performance.now();
 console.log(`Time Elapsed: ${(t11 - t10) / 1000} seconds.`)
 
+//Coding Exercise 6: Multiple Pointers - isSubsequence
+
+/*Write a function called isSubsequence which takes in two strings and checks 
+whether the characters in the first string form a subsequence of the characters 
+in the second string. In other words, the function should check whether the 
+characters in the first string appear somewhere in the second string, without their order changing.
+
+Examples:
+isSubsequence('hello', 'hello world'); // true
+isSubsequence('sing', 'sting'); // true
+isSubsequence('abc', 'abracadabra'); // true
+isSubsequence('abc', 'acb'); // false (order matters)
+*/
+
+//Solution 1
+
+// function isSubsequenceNew(source, target) {
+//     let first = 0;
+//     let targetFirst = 0;
+   
+//     while(first < source.length) {
+//       if(source[first] == target[targetFirst]) {      
+//         first++;      
+//       } else {
+//         targetFirst++;
+//       }
+//     }
+   
+//     if(first === source.length) {
+//         return true; 
+//     }
+//     return false; 
+//   }
+
+// word12 = 'sang';
+// word13 = 'sting';
+
+  //Performance
+// let t14 = performance.now();
+// console.log(`The subsequence characters are ${isSubsequenceNew(word12,word13)}`);
+// let t15 = performance.now();
+// console.log(`Time Elapsed: ${(t15 - t14) / 1000} seconds.`)
+
+//Solution 2 - Iterative
+function isSubsequence(str1,str2) {
+    if(!str1) return true;
+
+    i = 0;
+    for(let j = 0; j < str2.length; j++) {
+        if (i == str1.length - 1) return true;
+        if ( str1[i] === str2[j]) i++;
+    }
+    return false;
+  }
+
+word1 = 'dlr';
+word2 = 'hello world';
+  //Performance
+let t12 = performance.now();
+console.log(`The subsequence characters are ${isSubsequence(word1,word2)}`);
+let t13 = performance.now();
+console.log(`Time Elapsed: ${(t13 - t12) / 1000} seconds.`)
