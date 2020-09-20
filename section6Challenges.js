@@ -46,7 +46,7 @@ console.log(`Anagram check #2 ${sameFrequency(number1,number2)}`);
 let t7 = performance.now();
 console.log(`Time Elapsed: ${(t7 - t6) / 1000} seconds.`)
 
-//Coding Exercise 4: Frequency Counter / Multiple Pointers - areThereDuplicates
+//Coding Exercise 4: Frequency Counter / Multiple Pointers - Are There Duplicates
 
 function areThereDuplicates(...arr) {
     let counter = {};
@@ -81,3 +81,43 @@ let t3 = performance.now();
 console.log(`Are there duplicates ${areThereDuplicatesNew(array1)}`);
 let t4 = performance.now();
 console.log(`Time Elapsed: ${(t4 - t3) / 1000} seconds.`)
+
+//Coding Exercise 5: Multiple Pointers - Average Pairs
+
+/*
+Write a function called averagePair. Given a sorted array of integers 
+and a target average, determine if there is a pair of values in the array 
+where the average of the pair equals the target average. There may be more 
+than one pair that matches the average target.
+
+Example
+averagePair([1,2,3],2.5) // true
+averagePair([1,3,3,5,6,7,10,12,19],8) // true
+averagePair([-1,0,3,4,5,6], 4.1) // false
+averagePair([],4) // false
+*/
+
+//Solution 1 - Multiple Pointers. Time Complexity O(n) and Space Complexity O(1)
+function averagePair(arr,num) {
+    let left = 0; //Declare left (start) variable
+    let right = arr.length - 1; //Declare right (end) variable
+
+    while (left < right) { //while loop
+        let average  = (arr[left] + arr[right]) / 2; //Declare average variage
+        if (average === num) { //Primary if statement if average equals num
+            return `${arr[left]} and ${arr[right]} are the average of ${num} }}` 
+            // return true;
+        } else if (average > num) { //Else if average > num. Move pointer on right side to left
+            right--;
+        } else { //Else if average < num. Move pointer on left side to right
+            left++;
+        }
+    }
+    return false;
+}
+
+let t10 = performance.now();
+console.log(`The average pair ${averagePair([1,3,3,5,6,7,10,12,19],8)}`);
+let t11 = performance.now();
+console.log(`Time Elapsed: ${(t11 - t10) / 1000} seconds.`)
+
