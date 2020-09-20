@@ -290,3 +290,74 @@ console.log(countUniqueValuesNew([1,2,3,4,4,4,7,7,12,12,13])) // 7
 let t17 = performance.now();
 console.log(`Time Elapsed: ${(t17 - t16) / 1000} seconds.`)
 
+//4 - Sliding Window Pattern
+
+/*
+Write a function called maxSubarraySum which accepts an array of integers 
+and a number called n. The function should calculate the maximum sum of n 
+consecutive elements in the array.
+
+Example
+
+maxSubarraySum([1,2,5,2,8,1,5],2) // 10
+maxSubarraySum([1,2,5,2,8,1,5],4) // 17
+maxSubarraySum([4,2,1,6],1) // 6
+maxSubarraySum([4,2,1,6,2],4) // 13
+maxSubarraySum([],4) // null
+*/
+
+
+//Solution 1 Time Complexity O(n^2)
+function maxSubarraySum(arr, num) {
+    if ( num > arr.length){
+      return null;
+    }
+    var max = -Infinity;
+    for (let i = 0; i < arr.length - num + 1; i ++){
+      temp = 0;
+      for (let j = 0; j < num; j++){
+        temp += arr[i + j];
+      }
+      if (temp > max) {
+        max = temp;
+      }
+      console.log(temp,max);
+    }
+    return max;
+  }
+
+  //Performance Test
+let t22 = performance.now();
+console.log(maxSubarraySum([1,2,5,2,8,1,5],4)) //17
+let t23 = performance.now();
+console.log(`Time Elapsed: ${(t23 - t22) / 1000} seconds.`)
+
+
+
+//Solution 3 - For ... of and Math.max
+//Time Complexity O(n)
+
+//The task is: find the contiguous subarray of arr with the maximal sum of items.
+
+//Write the function getMaxSubSum(arr) that will return that sum.
+
+function getMaxSubSum(arr) {
+    let maxSum = 0;
+    let partialSum = 0;
+    //Iterate through array
+    for (let item of arr) {
+        //Add item to partialSum
+        partialSum += item;
+        //Remember the maximum
+        maxSum = Math.max(maxSum,partialSum);
+        //Zero if inegative
+        if (partialSum < 0) partialSum = 0;
+    }
+    return maxSum;
+}
+
+//Performance Test
+let t20 = performance.now();
+console.log(getMaxSubSum([2, -1, 2, 3, -9])) // 6
+let t21 = performance.now();
+console.log(`Time Elapsed: ${(t21 - t20) / 1000} seconds.`)
