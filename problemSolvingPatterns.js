@@ -307,7 +307,7 @@ maxSubarraySum([],4) // null
 */
 
 
-//Solution 1 Time Complexity O(n^2)
+//Solution 1 Time Complexity O(n^2) - Inefficient
 function maxSubarraySum(arr, num) {
     if ( num > arr.length){
       return null;
@@ -321,7 +321,7 @@ function maxSubarraySum(arr, num) {
       if (temp > max) {
         max = temp;
       }
-      console.log(temp,max);
+    //   console.log(temp,max);
     }
     return max;
   }
@@ -332,7 +332,28 @@ console.log(maxSubarraySum([1,2,5,2,8,1,5],4)) //17
 let t23 = performance.now();
 console.log(`Time Elapsed: ${(t23 - t22) / 1000} seconds.`)
 
+//Solution 2
 
+function maxSubarraySumNew(arr, num){
+    let maxSum = 0;
+    let tempSum = 0;
+    if (arr.length < num) return null;
+    for (let i = 0; i < num; i++) {
+      maxSum += arr[i];
+    }
+    tempSum = maxSum;
+    for (let i = num; i < arr.length; i++) {
+      tempSum = tempSum - arr[i - num] + arr[i];
+      maxSum = Math.max(maxSum, tempSum);
+    }
+    return maxSum;
+  }
+
+//Performance Test
+let t24 = performance.now();
+console.log(maxSubarraySumNew([1,2,5,2,8,1,5],4)) //17
+let t25 = performance.now();
+console.log(`Time Elapsed: ${(t25 - t24) / 1000} seconds.`)
 
 //Solution 3 - For ... of and Math.max
 //Time Complexity O(n)
@@ -361,3 +382,62 @@ let t20 = performance.now();
 console.log(getMaxSubSum([2, -1, 2, 3, -9])) // 6
 let t21 = performance.now();
 console.log(`Time Elapsed: ${(t21 - t20) / 1000} seconds.`)
+
+//Divide and Conquer
+
+/*
+Given a sorted array of integers, write a function called search, 
+that accepts a value and returns the index where the value passed 
+to the function is located. If the value is not found, return -1
+
+Example
+search([1,2,3,4,5,6],4) // 3
+search([1,2,3,4,5,6],6) // 5
+search([1,2,3,4,5,6],11) // -1
+*/
+
+//Solution 1 - Linear Search Time COmplexity O(N)
+
+function search(arr, val){
+    for(let i = 0; i < arr.length; i++){
+        if(arr[i] === val){
+            return i;
+        }
+    }
+    return -1;
+}
+//Performance Test
+let t26 = performance.now();
+console.log(search([1,2,3,4,5,6],6)) // 5
+let t27 = performance.now();
+console.log(`Time Elapsed: ${(t27 - t26) / 1000} seconds.`)
+
+//Solution 2 - Binary Search
+function searchNew(array, val) {
+ 
+    let min = 0;
+    let max = array.length - 1;
+ 
+    while (min <= max) {
+        let middle = Math.floor((min + max) / 2);
+        let currentElement = array[middle];
+ 
+        if (currentElement < val) {
+            min = middle + 1;
+        }
+        else if (currentElement > val) {
+            max = middle - 1;
+        }
+        else {
+            return middle;
+        }
+    }
+ 
+    return -1;
+}
+
+//Performance Test
+let t28 = performance.now();
+console.log(searchNew([1,2,3,4,5,6],6)) // 5
+let t29 = performance.now();
+console.log(`Time Elapsed: ${(t29 - t28) / 1000} seconds.`)
