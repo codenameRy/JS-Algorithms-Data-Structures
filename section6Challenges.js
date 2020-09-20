@@ -11,9 +11,7 @@ function sameFrequency(num1, num2) {
     let newNum1 = num1.toString();
     let newNum2 = num2.toString();
     //Check length. Return false if different
-    if (newNum1.length !== newNum2.length) {
-        return false
-    }
+    if (newNum1.length !== newNum2.length) return false;
     //Create 2 counter variables
     let counter1 = {};
     let counter2 = {};
@@ -31,9 +29,8 @@ function sameFrequency(num1, num2) {
             return false
         }
         //Check if frequency of counters are the same
-        if (counter1[key] !== counter2[key]) {
-            return false
-        }
+        if (counter1[key] !== counter2[key]) return false;
+        
     }
     console.log(counter1);
     console.log(counter2);
@@ -72,11 +69,12 @@ console.log(`Are there duplicates ${areThereDuplicates(array)}`);
 let t2 = performance.now();
 console.log(`Time Elapsed: ${(t2 - t1) / 1000} seconds.`)
 
+//Solution 2 - ES6 new Set Method
 function areThereDuplicatesNew(arr) {
     return new Set(arr).size !== arr.length;
 }
 
-array1 = [1, 2, 2, 3];
+array1 = ['a','b','c','d'];
 
 //Performance Test
 let t3 = performance.now();
