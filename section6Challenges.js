@@ -160,34 +160,34 @@ isSubsequence('abc', 'acb'); // false (order matters)
 
 //Solution 1
 
-// function isSubsequenceNew(source, target) {
-//     let first = 0;
-//     let targetFirst = 0;
+function isSubsequenceNew(first, second) {
+    let firstPointer = 0; // Declare variable for counter of first string
+    let secondPointer = 0; //Declare variable for counter of second string
    
-//     while(first < source.length) {
-//       if(source[first] == target[targetFirst]) {      
-//         first++;      
-//       } else {
-//         targetFirst++;
-//       }
-//     }
+    while(first < first.length) { //Loop while first counter is less than first string
+      if(first[firstPointer] == second[secondPointer]) {     // Check if letters of the first word are equal to letters of second word
+        firstPointer++;      //if so, increment firstPointer
+      } else {               //else, increment secondPointer
+        secondPointer++;
+      }
+    }
    
-//     if(first === source.length) {
-//         return true; 
-//     }
-//     return false; 
-//   }
+    if(firstPointer === first.length) { //Check if firstPointer equals first.length --> return true
+        return true; 
+    }
+    return false; 
+  }
 
 // word12 = 'sang';
 // word13 = 'sting';
 
-  //Performance
+// //  Performance
 // let t14 = performance.now();
-// console.log(`The subsequence characters are ${isSubsequenceNew(word12,word13)}`);
+// console.log(`The subsequence characters #1 are ${isSubsequenceNew(word12,word13)}`);
 // let t15 = performance.now();
 // console.log(`Time Elapsed: ${(t15 - t14) / 1000} seconds.`)
 
-//Solution 2 - Iterative
+//Solution 2 - Iterative - Time Complexity O(N + M) - Space Complexity O(1)
 function isSubsequence(str1,str2) {
     if(!str1) return true;
 
@@ -203,7 +203,7 @@ word1 = 'dlr';
 word2 = 'hello world';
   //Performance
 let t12 = performance.now();
-console.log(`The subsequence characters are ${isSubsequence(word1,word2)}`);
+console.log(`The subsequence characters #2 are ${isSubsequence(word1,word2)}`);
 let t13 = performance.now();
 console.log(`Time Elapsed: ${(t13 - t12) / 1000} seconds.`)
 
