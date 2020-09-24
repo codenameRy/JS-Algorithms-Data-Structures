@@ -43,7 +43,7 @@ number2 = 821;
 
 //Performance Test
 let t6 = performance.now();
-console.log(`Anagram check #2 ${sameFrequency(number1,number2)}`);
+console.log(`Same frequency check #2 ${sameFrequency(number1,number2)}`);
 let t7 = performance.now();
 console.log(`Time Elapsed: ${(t7 - t6) / 1000} seconds.`)
 
@@ -59,7 +59,7 @@ function areThereDuplicates(arr) {
             return true
         }
     }
-    console.log(counter)
+    // console.log(counter)
     return false
 }
 
@@ -67,22 +67,42 @@ array = ['a','b','c','d'];
 
 //Performance Test
 let t1 = performance.now();
-console.log(`Are there duplicates ${areThereDuplicates(array)}`);
+console.log(`Frequency counter approach: Are there duplicates #1 ${areThereDuplicates(array)}`);
 let t2 = performance.now();
 console.log(`Time Elapsed: ${(t2 - t1) / 1000} seconds.`)
 
-//Solution 2 - ES6 new Set Method
-function areThereDuplicatesNew(arr) {
-    return new Set(arr).size !== arr.length;
+//Solution 3 - Frequency Counter
+
+function areThereDuplicatesNew() {
+    let counter = {};
+    for(let val in arguments){
+        counter[arguments[val]] = (counter[arguments[val]] || 0) + 1
+      }
+      for (let key in counter) {
+          if (counter[key] > 1) return true
+      }
+      return false
 }
 
 array1 = ['a','b','c','d'];
-
 //Performance Test
 let t3 = performance.now();
-console.log(`Are there duplicates ${areThereDuplicatesNew(array1)}`);
+console.log(`Frequency counter approach: Are there duplicates #2 ${areThereDuplicatesNew(array1)}`);
 let t4 = performance.now();
 console.log(`Time Elapsed: ${(t4 - t3) / 1000} seconds.`)
+
+//Solution 3 - ES6 new Set Method
+function areThereDuplicatesNew2(arr) {
+    return new Set(arr).size !== arr.length;
+}
+
+array2 = ['a','b','c','d'];
+
+//Performance Test
+let t5 = performance.now();
+console.log(`ES6 New Set Method: Are there duplicates #3 ${areThereDuplicatesNew2(array2)}`);
+let t51 = performance.now();
+console.log(`Time Elapsed: ${(t51 - t5) / 1000} seconds.`)
 
 //Coding Exercise 5: Multiple Pointers - Average Pairs
 
