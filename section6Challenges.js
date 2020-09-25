@@ -210,8 +210,11 @@ console.log(`Time Elapsed: ${(t13 - t12) / 1000} seconds.`)
 //Coding Exercise 7: Sliding Window - maxSubarraySum
 /*
 Sliding Window - maxSubarraySum
-Given an array of integers and a number, write a function called maxSubarraySum, which finds the maximum sum of a subarray with the length of the number passed to the function.
-Note that a subarray must consist of consecutive elements from the original array. In the first example below, [100, 200, 300] is a subarray of the original array, but [100, 300] is not.
+Given an array of integers and a number, write a function called maxSubarraySum, which 
+finds the maximum sum of a subarray with the length of the number passed to the function.
+Note that a subarray must consist of consecutive elements from the original array. 
+
+In the first example below, [100, 200, 300] is a subarray of the original array, but [100, 300] is not.
 maxSubarraySum([100,200,300,400], 2) // 700
 maxSubarraySum([1,4,2,10,23,3,1,0,20], 4)  // 39 
 maxSubarraySum([-3,4,0,-2,6,-1], 2) // 5
@@ -241,3 +244,90 @@ let t20 = performance.now();
 console.log(`Max Sub Array Sum is ${maxSubarraySum([100,200,300,400], 2)}`) //700
 let t21 = performance.now();
 console.log(`Time Elapsed: ${(t21 - t20) / 1000} seconds.`)
+
+//Coding Exercise 8: Sliding Window - minSubArrayLen
+/*
+Write a function called minSubArrayLen which accepts two parameters - an array of positive integers and 
+a positive integer.
+This function should return the minimal length of a contiguous subarray of which the sum is greater 
+than or equal to the integer passed to the function. 
+
+If there isn't one, return 0 instead
+
+Examples:
+minSubArrayLen([2,3,1,2,4,3], 7) // 2 -> because [4,3] is the smallest subarray
+minSubArrayLen([2,1,6,5,4], 9) // 2 -> because [5,4] is the smallest subarray
+minSubArrayLen([3,1,7,11,2,9,8,21,62,33,19], 52) // 1 -> because [62] is greater than 52
+minSubArrayLen([1,4,16,22,5,7,8,9,10],39) // 3
+minSubArrayLen([1,4,16,22,5,7,8,9,10],55) // 5
+minSubArrayLen([4, 3, 3, 8, 1, 2, 3], 11) // 2
+minSubArrayLen([1,4,16,22,5,7,8,9,10],95) // 0
+Time Complexity - O(n)
+Space Complexity - O(1)
+*/
+
+//Solution 1 - Two Pointers - Time Complexity O(N)
+let minSubArrayLen = function(nums, s) {
+    let distance = Number.MAX_SAFE_INTEGER;
+    let left = 0;
+    let sum = 0;
+    // left pointer and right pointer defines the window. 
+    // the goal is to find the smallest window that has a sum of s or larger.
+    for (let right = 0; right < nums.length; right++) {
+        sum += nums[right]; 
+        while (sum >= s) {
+            distance = Math.min(distance, right - left + 1);
+            sum -= nums[left];
+            left += 1;
+        }
+    }
+
+    return distance === Number.MAX_SAFE_INTEGER ? 0 : distance;
+};
+
+//Performance Test
+let t24 = performance.now();
+console.log(`Minimum Sub Array length is ${minSubArrayLen([1,4,16,22,5,7,8,9,10],39)}`) //3
+let t25 = performance.now();
+console.log(`Time Elapsed: ${(t25 - t24) / 1000} seconds.`)
+
+  //Solution 2 - Two Pointers - Time Complexity O(N)
+
+function minSubArrayLen2(arr,int) {
+    let distance = Number.MAX_SAFE_INTEGER; // sets highest max window size
+    let left = 0;
+    let sum = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i]; // add to sum while iterating
+
+        while (sum >= int) { // while sum is greater than our limit, int
+            distance = Math.min(distance, i + 1 - left); //offset by 1 for index
+            sum -= arr[left]; // minus from sum until sum is smaller than int
+            left+=  1;
+        }
+    }
+    return distance === Number.MAX_SAFE_INTEGER ? 0 : distance; // If range didnt change return 0
+}
+
+  //Performance Test
+let t26 = performance.now();
+console.log(`Minimum Sub Array length #2 is ${minSubArrayLen2([1,4,16,22,5,7,8,9,10],39)}`) //3
+let t27 = performance.now();
+console.log(`Time Elapsed: ${(t27 - t26) / 1000} seconds.`)
+
+//Coding Exercise 9: Sliding Window - findLongestSubstring
+/*
+Write a function called findLongestSubstring, which accepts a string and returns the length 
+of the longest substring with all distinct characters.
+
+Examples
+findLongestSubstring('') // 0
+findLongestSubstring('rithmschool') // 7
+findLongestSubstring('thisisawesome') // 6
+findLongestSubstring('thecatinthehat') // 7
+findLongestSubstring('bbbbbb') // 1
+findLongestSubstring('longestsubstring') // 8
+findLongestSubstring('thisishowwedoit') // 6
+Time Complexity - O(n)
+*/
