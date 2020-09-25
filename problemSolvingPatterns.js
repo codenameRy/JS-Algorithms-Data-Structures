@@ -332,18 +332,18 @@ console.log(maxSubarraySum([1,2,5,2,8,1,5],4)) //17
 let t23 = performance.now();
 console.log(`Time Elapsed: ${(t23 - t22) / 1000} seconds.`)
 
-//Solution 2
+//Solution 2 - Time Complexity O(N)
 
 function maxSubarraySumNew(arr, num){
     let maxSum = 0;
     let tempSum = 0;
-    if (arr.length < num) return null;
-    for (let i = 0; i < num; i++) {
-      maxSum += arr[i];
+    if (arr.length < num) return null; // Edge case if its an invalid array
+    for (let i = 0; i < num; i++) { //Sum together the first 3 digits and 
+      maxSum += arr[i]; //store in variable maxSum
     }
     tempSum = maxSum;
     for (let i = num; i < arr.length; i++) {
-      tempSum = tempSum - arr[i - num] + arr[i];
+      tempSum = tempSum - arr[i - num] + arr[i]; //Minus previous number and add next number
       maxSum = Math.max(maxSum, tempSum);
     }
     return maxSum;
@@ -351,7 +351,7 @@ function maxSubarraySumNew(arr, num){
 
 //Performance Test
 let t24 = performance.now();
-console.log(maxSubarraySumNew([1,2,5,2,8,1,5],4)) //17
+console.log(`Max Sub Array #2 - ${maxSubarraySumNew([1,2,5,2,8,1,5],4)}`) //17
 let t25 = performance.now();
 console.log(`Time Elapsed: ${(t25 - t24) / 1000} seconds.`)
 

@@ -222,16 +222,16 @@ maxSubarraySum([2,3], 3) // null
 
 //Solution 1 - Sliding Window - Time Complexity O(N) and Space Complexity O(1)
 function maxSubarraySum(arr,num){
-      let maxSum = 0;
-      let tempSum = 0;
-      if (arr.length < num) return null;
-      for (let i = 0; i < num; i++) {
+      let maxSum = 0; //First Counter
+      let tempSum = 0; //Temp counter
+      if (arr.length < num) return null; //Edge case if its an invalid entry
+      for (let i = 0; i < num; i++) { //Loop to count the first 3 digits and store in variable maxSum
         maxSum += arr[i];
       }
-      tempSum = maxSum;
-      for (let i = num; i < arr.length; i++) {
-        tempSum = tempSum - arr[i - num] + arr[i];
-        maxSum = Math.max(maxSum, tempSum);
+      tempSum = maxSum; //Set tempSum equal to maxSum
+      for (let i = num; i < arr.length; i++) { //Loop through n position 
+        tempSum = tempSum - arr[i - num] + arr[i]; //Minus previous number and add next number to find sum
+        maxSum = Math.max(maxSum, tempSum); //Find the largest sum in the sliding window
       }
       return maxSum;
   }
