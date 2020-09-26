@@ -331,3 +331,51 @@ findLongestSubstring('longestsubstring') // 8
 findLongestSubstring('thisishowwedoit') // 6
 Time Complexity - O(n)
 */
+
+function findLongestSubstring(str) {
+    let strLength = str.length;
+    let longest = 0;
+    let current = "";
+
+    for (let i = 0; i < strLength; i++) {
+        current = current.substring(current.indexOf(str[i]) + 1)
+        current += str[i];
+
+        if (current.length > longest) {
+            longest = current.length;
+        }
+    }
+    return longest;
+}
+
+//Performance Test
+let t28 = performance.now();
+console.log(`Find Longest Substring is ${findLongestSubstring('rithmschool')}`) //3
+let t29 = performance.now();
+console.log(`Time Elapsed: ${(t29 - t28) / 1000} seconds.`)
+
+  //Solution 2
+
+  function findLongestSubstringNew(str) {
+    let longest = 0;
+    let seen = {};
+    let start = 0;
+   
+    for (let i = 0; i < str.length; i++) {
+      let char = str[i];
+      if (seen[char]) {
+        start = Math.max(start, seen[char]);
+      }
+      // index - beginning of substring + 1 (to include current in count)
+      longest = Math.max(longest, i - start + 1);
+      // store the index of the next char so as to not double count
+      seen[char] = i + 1;
+    }
+    return longest;
+  }
+
+//Performance Test
+let t30 = performance.now();
+console.log(`Find Longest Substring #2 is ${findLongestSubstringNew('rithmschool')}`) //3
+let t31 = performance.now();
+console.log(`Time Elapsed: ${(t31 - t30) / 1000} seconds.`)
