@@ -92,7 +92,7 @@ console.log(`Product of array Iterative #2 is ${productOfArrayNew(prodArr)}`);
 let t12 = performance.now();
 console.log(`Time Elapsed: ${(t12 - t11) / 1000} seconds.`)
 
-//4 - Recursive Sum Range
+//4 - Sum Range
 
 /*
 // SAMPLE INPUT/OUTPUT
@@ -100,6 +100,7 @@ console.log(`Time Elapsed: ${(t12 - t11) / 1000} seconds.`)
 // recursiveRange(10) // 55 
 */
 
+//Solution 1 - Recursion
 function recursiveRange(num){
     if (num === 1) return 1;
     return num + recursiveRange(num - 1)
@@ -107,6 +108,25 @@ function recursiveRange(num){
 
  //Performance
 let t13 = performance.now();
-console.log(`Sum range Recursive #1 is ${productOfArrayNew(6)}`);
+console.log(`Sum range Recursive #1 is ${recursiveRange((1,102))}`);
 let t14 = performance.now();
 console.log(`Time Elapsed: ${(t14 - t13) / 1000} seconds.`)
+
+
+//Solution 2 - Iterative
+function recursiveRangeNew(num){
+    let max = Math.max(num[0], num[1]);
+    let min = Math.min(num[0], num[1]);
+    let temp = 0;
+    for (let i = min; i <= max; i++) {
+      temp += i;
+    }
+    return temp;
+ }
+
+ //Performance
+let t15 = performance.now();
+console.log(`Sum range Iteratice #2 is ${recursiveRangeNew((1,102))}`);
+let t16 = performance.now();
+console.log(`Time Elapsed: ${(t16 - t15) / 1000} seconds.`)
+
