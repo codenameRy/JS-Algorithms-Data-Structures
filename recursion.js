@@ -131,3 +131,19 @@ let t14 = performance.now();
 console.log(`Collect Odd numbers helper recursive function #1 are: ${collectOddValues(arr1)}`);
 let t15 = performance.now();
 console.log(`Time Elapsed: ${(t15 - t14) / 1000} seconds.`)
+
+//Solution 2 - Pure Recursion
+function collectOddValues(arr){
+    let newArr = [];
+    
+    if(arr.length === 0) {
+        return newArr;
+    }
+        
+    if(arr[0] % 2 !== 0){
+        newArr.push(arr[0]);
+    }
+        
+    newArr = newArr.concat(collectOddValues(arr.slice(1)));
+    return newArr;
+}
