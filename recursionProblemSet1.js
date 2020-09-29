@@ -114,7 +114,7 @@ console.log(`Time Elapsed: ${(t14 - t13) / 1000} seconds.`)
 
 
 //Solution 2 - Iterative
-function recursiveRangeNew(num){
+function sumRange(num){
     let max = Math.max(num[0], num[1]);
     let min = Math.min(num[0], num[1]);
     let temp = 0;
@@ -126,7 +126,32 @@ function recursiveRangeNew(num){
 
  //Performance
 let t15 = performance.now();
-console.log(`Sum range Iteratice #2 is ${recursiveRangeNew((1,102))}`);
+console.log(`Sum range Iterative #2 is ${sumRange((1,102))}`);
 let t16 = performance.now();
 console.log(`Time Elapsed: ${(t16 - t15) / 1000} seconds.`)
+
+//Solution 3 - Iterative with Spread Operator
+
+function sumRangeNew(arr) {
+    // Figure out the minimum and maximum numbers in the array
+    const min = Math.min(...arr)
+    const max = Math.max(...arr)
+  
+    // variable to hold our sum
+    let sum = 0
+  
+    // loop and add all numbers from lowest to highest value
+    for (let i = min; i <= max; i++) {
+      sum += i
+    }
+  
+    // return the sum
+    return sum
+  }
+  
+ //Performance
+ let t17 = performance.now();
+ console.log(`Sum range Iterative #3 is ${sumRange((1,102))}`);
+ let t18 = performance.now();
+ console.log(`Time Elapsed: ${(t18 - t17) / 1000} seconds.`)
 
