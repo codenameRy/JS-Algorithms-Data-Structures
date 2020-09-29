@@ -78,7 +78,7 @@ function factorial2(n) {
   
 //Performance Test
 let t11 = performance.now();
-console.log(`Factorial recursion #2 ${factorial2(308)}`);
+console.log(`Factorial recursion #2 ${factorial2(3)}`);
 let t12 = performance.now();
 console.log(`Time Elapsed: ${(t12 - t11) / 1000} seconds.`)
 //   alert( factorial(5) ); // 120
@@ -147,3 +147,11 @@ function collectOddValues(arr){
     newArr = newArr.concat(collectOddValues(arr.slice(1)));
     return newArr;
 }
+
+let arr2 = [1,2,3,4,5,6,7,8,9]; //Shrik array until its empty
+
+//Performance Test
+let t16 = performance.now();
+console.log(`Collect Odd numbers pure recursive function #2 are: ${collectOddValues(arr1)}`);
+let t17 = performance.now();
+console.log(`Time Elapsed: ${(t17 - t16) / 1000} seconds.`)
