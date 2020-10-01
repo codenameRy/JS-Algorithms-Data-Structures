@@ -149,9 +149,58 @@ function sumRangeNew(arr) {
     return sum
   }
   
- //Performance
- let t17 = performance.now();
- console.log(`Sum range Iterative #3 is ${sumRange((1,102))}`);
- let t18 = performance.now();
- console.log(`Time Elapsed: ${(t18 - t17) / 1000} seconds.`)
+//Performance
+let t17 = performance.now();
+console.log(`Sum range Iterative #3 is ${sumRange((1,102))}`);
+let t18 = performance.now();
+console.log(`Time Elapsed: ${(t18 - t17) / 1000} seconds.`)
 
+ //5 - Fibonnaci Sequence
+
+ /*
+ Write a recursive function called fib which accepts a number 
+ and returns the nth number in the Fibonacci sequence. 
+ Recall that the Fibonacci sequence is the sequence 
+ of whole numbers 1, 1, 2, 3, 5, 8, ... which starts with 1 and 1, 
+ and where every number thereafter is equal to the sum of the previous two numbers.
+
+// fib(4) // 3
+// fib(10) // 55
+// fib(28) // 317811
+// fib(35) // 9227465
+
+ */
+
+ //1 - Recursion Solution
+function fib(num){
+    if (num < 2) return num;
+    return fib(num - 1) + fib(num - 2);
+  }
+
+//   console.log(fib(10));
+
+  //Performance
+let t19 = performance.now();
+console.log(`Fibonacci Recursion #1 is ${fib(40)}`);
+let t20 = performance.now();
+console.log(`Time Elapsed: ${(t20 - t19) / 1000} seconds.`)
+
+  //2 - Iterative Solution
+
+  function fibonacci(num) {
+      num1 = 0;
+      num2 = 1;
+      sum = 0;
+      for (let i = 0; i < num; i++) {
+        sum = num1 + num2;
+        num1 = num2;
+        num2 = sum;
+      }
+      return num2;
+  }
+
+//Performance
+let t21 = performance.now();
+console.log(`Fibonacci Iterative #2 is ${fibonacci(40)}`);
+let t22 = performance.now();
+console.log(`Time Elapsed: ${(t22 - t21) / 1000} seconds.`)
