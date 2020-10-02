@@ -63,12 +63,32 @@ Otherwise it returns false.
 
 */
 
+//Solution 1 - Recursion
+function isPalindromeRec(arr) {
+    if (arr.length <= 1) return true;
+    if(arr[0] === arr.slice(-1)) return isPalindrome(arr.slice(1,-1))
+    return false;
+}
+// console.log(isPalindromeRec('tacocat'));
+// console.log(isPalindromeRec('amanaplanacanalpandemonium'));
+
+//Performance Test
+let t7 = performance.now();
+console.log(`Palindrom Recursive #1 is ${isPalindromeRec("racecar")}`);
+let t8 = performance.now();
+console.log(`Time Elapsed: ${(t8 - t7) / 1000} seconds.`)
+
+//Solution 2 - Built-In Method
 function isPalindrome(arr) {
     let newArr = arr.split("").reverse().join("");
     return newArr === arr;
 }
-
-console.log(isPalindrome("racecar"))
+//Performance Test
+let t9 = performance.now();
+console.log(`Palindrom Iterative #1 is ${isPalindrome("racecar")}`);
+let t10 = performance.now();
+console.log(`Time Elapsed: ${(t10 - t9) / 1000} seconds.`)
+// console.log(isPalindrome("racecar"))
 
 //3 - Recursive
 
