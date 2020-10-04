@@ -136,6 +136,75 @@ console.log(`Time Elapsed: ${(t14 - t13) / 1000} seconds.`)
 
 
 //4 - Flatten
+/*
+Write a recursive function called flatten which accepts an array of arrays 
+and returns a new array with all values flattened.
+
+// flatten([1, 2, 3, [4, 5] ]) // [1, 2, 3, 4, 5]
+// flatten([1, [2, [3, 4], [[5]]]]) // [1, 2, 3, 4, 5]
+// flatten([[1],[2],[3]]) // [1,2,3]
+// flatten([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]]) // [1,2,3
+*/
+
+function flatten(arr){
+    return arr.flat();
+  }
+
+// console.log(flatten([1, 2, 3, [4, 5] ]));
+
+let t15 = performance.now();
+console.log(`Flatten Check #1 is ${flatten([1, 2, 3, [4, 5] ])}`);
+let t16 = performance.now();
+console.log(`Time Elapsed: ${(t16 - t15) / 1000} seconds.`)
+
+//
+function flattenNew(arr) {
+    let newArr = [];
+    return newArr.concat(newArr,arr)
+}
+
+// console.log(flattenNew([1, 2, 3, [4, 5] ]));
+//Performance
+let t17 = performance.now();
+console.log(`Flatten Check #2 is ${flattenNew([1, 2, 3, [4, 5] ])}`);
+let t18 = performance.now();
+console.log(`Time Elapsed: ${(t18 - t17) / 1000} seconds.`)
+
+//Solution 3 - Recursion
+
+function flattenRec(oldArr){
+    var newArr = []
+        for(var i = 0; i < oldArr.length; i++){
+          if(Array.isArray(oldArr[i])){
+                newArr = newArr.concat(flatten(oldArr[i]))
+          } else {
+                newArr.push(oldArr[i])
+          }
+    } 
+    return newArr;
+  }
+
+  //Performance
+let t19 = performance.now();
+console.log(`Flatten Check #2 is ${flattenRec([1, 2, 3, [4, 5] ])}`);
+let t20 = performance.now();
+console.log(`Time Elapsed: ${(t20 - t19) / 1000} seconds.`)
+
+//Solution 4 - Nest For Loops
+
+function flattenArrNest(myArray) {
+var myNewArray3 = [];
+for (var i = 0; i < myArray.length; ++i) {
+  for (var j = 0; j < myArray[i].length; ++j)
+    myNewArray3.push(myArray[i][j]);
+    }
+}
+
+//Performance
+let t21 = performance.now();
+console.log(`Flatten Check #2 is ${flattenArrNest([1, 2, 3, [4, 5] ])}`);
+let t22 = performance.now();
+console.log(`Time Elapsed: ${(t22 - t21) / 1000} seconds.`)
 
 //5 - Capitalize First
 
