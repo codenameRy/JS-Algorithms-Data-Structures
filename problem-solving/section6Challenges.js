@@ -18,7 +18,7 @@ function sameFrequency(num1, num2) {
     let counter2 = {};
     //Loop through 2 arrays with for ... of. Assign counter
     for (let num of newNum1) {
-         if (counter1[num] = (counter1[num] || 0) + 1) {}
+         if (counter1[num] = (counter1[num] || 0) + 1);
     }
     for (let num of newNum2) {
         counter2[num] = (counter2[num] || 0) + 1;

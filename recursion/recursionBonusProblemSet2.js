@@ -207,6 +207,78 @@ let t22 = performance.now();
 console.log(`Time Elapsed: ${(t22 - t21) / 1000} seconds.`)
 
 //5 - Capitalize First
+/*
+Write a recursive function called capitalizeFirst. Given an array of strings, 
+capitalize the first letter of each string in the array.
+
+// capitalizeFirst(['car','taco','banana']); // ['Car','Taco','Banana']
+*/
+
+//Solution 1 - For In Method
+function capitalizeFirst(arr) {
+    let newArr = []
+    for (let letter in arr) {
+        // console.log(arr[letter]);
+        newArr.push(arr[letter].charAt(0).toUpperCase() + arr[letter].slice(1));
+    }
+    return newArr;
+  }
+
+// console.log(capitalizeFirst(['car','taco','banana']));
+  //Performance
+let t23 = performance.now();
+console.log(`Capitalize First word #1 Iterative is ${capitalizeFirst(['car','taco','banana','house','tremendous'])}`);
+let t24 = performance.now();
+console.log(`Time Elapsed: ${(t24 - t23) / 1000} seconds.`)
+
+//Solution 2 - For Loop
+function uppercase(str)
+{
+//   var array1 = str.split(' ');
+  var newarray1 = [];
+    
+  for(var x = 0; x < str.length; x++){
+      newarray1.push(str[x].charAt(0).toUpperCase()+str[x].slice(1));
+  }
+  return newarray1.join(' ');
+}
+
+// console.log(uppercase(['car','taco','banana']))
+//Performance
+let t25 = performance.now();
+console.log(`Capitalize First word #2 Iterative is ${uppercase(['car','taco','banana','house','tremendous'])}`);
+let t26 = performance.now();
+console.log(`Time Elapsed: ${(t26 - t25) / 1000} seconds.`)
+
+//Solution 3 - Recursion
+
+function capitalizeFirstNew (arr) {
+    if(!arr.length) return []
+    return [ arr[0].charAt(0).toUpperCase() + arr[0].slice(1), ...capitalizeFirst(arr.slice(1))]
+  }
+
+  //Performance
+let t27 = performance.now();
+console.log(`Capitalize First word #3 Recursion is ${capitalizeFirstNew(['car','taco','banana','house','tremendous'])}`);
+let t28 = performance.now();
+console.log(`Time Elapsed: ${(t28 - t27) / 1000} seconds.`)
+
+//Solution 3 - Recursion
+function capitalizeWordsDos(array) {
+    if (array.length === 1) {
+      return [array[0].toUpperCase()];
+    }
+    let res = capitalizeWordsDos(array.slice(0, -1));
+    res.push(array.slice(array.length-1)[0].toUpperCase());
+    return res;
+   
+  }
+
+//Performance
+let t29 = performance.now();
+console.log(`Capitalize First word #4 Recursion is ${capitalizeWordsDos(['car','taco','banana','house','tremendous'])}`);
+let t30 = performance.now();
+console.log(`Time Elapsed: ${(t30 - t29) / 1000} seconds.`)
 
 //6 - Nested Even Sum
 
