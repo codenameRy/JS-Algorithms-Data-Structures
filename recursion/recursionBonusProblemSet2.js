@@ -263,7 +263,7 @@ console.log(`Capitalize First word #3 Recursion is ${capitalizeFirstNew(['car','
 let t28 = performance.now();
 console.log(`Time Elapsed: ${(t28 - t27) / 1000} seconds.`)
 
-//Solution 3 - Recursion
+//Solution 4 - Recursion
 function capitalizeWordsDos(array) {
     if (array.length === 1) {
       return [array[0].toUpperCase()];
@@ -281,6 +281,103 @@ let t30 = performance.now();
 console.log(`Time Elapsed: ${(t30 - t29) / 1000} seconds.`)
 
 //6 - Nested Even Sum
+/*
+Write a recursive function called nestedEvenSum. Return the sum of all even numbers 
+in an object which may contain nested objects.
+*/
+
+//Solution 1 - For Loop Recursion
+function nestedEvenSum (obj) {
+  var keys = Object.keys(obj);
+  var result = 0;
+  for (var i = 0; i < keys.length; i++) {
+      var val = obj[keys[i]];
+      if (typeof val === "number" && val % 2 === 0) {
+          result += val;
+      } else if (val instanceof Object && Object.keys(val).length > 0) {
+          result += nestedEvenSum(val);
+      } else {
+          // Ignore all other values
+      }
+  }
+  return result;
+}
+
+
+var obj1 = {
+  outer: 2,
+  obj: {
+    inner: 2,
+    otherObj: {
+      superInner: 2,
+      notANumber: true,
+      alsoNotANumber: "yup"
+    }
+  }
+}
+
+var obj2 = {
+  a: 2,
+  b: {b: 2, bb: {b: 3, bb: {b: 2}}},
+  c: {c: {c: 2}, cc: 'ball', ccc: 5},
+  d: 1,
+  e: {e: {e: 2}, ee: 'car'}
+};
+
+//console.log(nestedEvenSum(obj1)); // 6
+// console.log(nestedEvenSum(obj2)); // 10
+
+//Performance
+let t31 = performance.now();
+console.log(`Nested Sum Even Numbers #1 Recursion is ${nestedEvenSum(obj1)}`);
+console.log(`Nested Sum Even Numbers #1 Recursion is ${nestedEvenSum(obj2)}`);
+let t32 = performance.now();
+console.log(`Time Elapsed: ${(t32 - t31) / 1000} seconds.`)
+
+
+
+//Solution 2 - For In Recursion
+
+function nestedEvenSumNew (obj, sum=0) {
+  for (var key in obj) {
+      if (typeof obj[key] === 'object'){
+          sum += nestedEvenSumNew(obj[key]);
+      } else if (typeof obj[key] === 'number' && obj[key] % 2 === 0){
+          sum += obj[key];
+      }
+  }
+  return sum;
+}
+
+var obj3 = {
+  outer: 2,
+  obj: {
+    inner: 2,
+    otherObj: {
+      superInner: 2,
+      notANumber: true,
+      alsoNotANumber: "yup"
+    }
+  }
+}
+
+var obj4 = {
+  a: 2,
+  b: {b: 2, bb: {b: 3, bb: {b: 2}}},
+  c: {c: {c: 2}, cc: 'ball', ccc: 5},
+  d: 1,
+  e: {e: {e: 2}, ee: 'car'}
+};
+
+// console.log(nestedEvenSum(obj3)); // 6
+// console.log(nestedEvenSum(obj4)); // 10
+
+//Performance
+let t33 = performance.now();
+console.log(`Nested Sum Even Numbers #1 Recursion is ${nestedEvenSumNew(obj3)}`);
+console.log(`Nested Sum Even Numbers #1 Recursion is ${nestedEvenSumNew(obj4)}`);
+let t34 = performance.now();
+console.log(`Time Elapsed: ${(t34 - t33) / 1000} seconds.`)
 
 //7 - Capitalize Words
 
