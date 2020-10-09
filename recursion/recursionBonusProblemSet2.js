@@ -264,19 +264,19 @@ let t28 = performance.now();
 console.log(`Time Elapsed: ${(t28 - t27) / 1000} seconds.`)
 
 //Solution 4 - Recursion
-function capitalizeWordsDos(array) {
-    if (array.length === 1) {
-      return [array[0].toUpperCase()];
-    }
-    let res = capitalizeWordsDos(array.slice(0, -1));
-    res.push(array.slice(array.length-1)[0].toUpperCase());
-    return res;
-   
+function capitalizeFirstNew2 (array) {
+  if (array.length === 1) {
+    return [array[0][0].toUpperCase() + array[0].substr(1)];
   }
+  const res = capitalizeFirstNew2(array.slice(0, -1));
+  const string = array.slice(array.length - 1)[0][0].toUpperCase() + array.slice(array.length-1)[0].substr(1);
+  res.push(string);
+  return res;
+}
 
 //Performance
 let t29 = performance.now();
-console.log(`Capitalize First word #4 Recursion is ${capitalizeWordsDos(['car','taco','banana','house','tremendous'])}`);
+console.log(`Capitalize First word #4 Recursion is ${capitalizeFirstNew2(['car','taco','banana','house','tremendous'])}`);
 let t30 = performance.now();
 console.log(`Time Elapsed: ${(t30 - t29) / 1000} seconds.`)
 
@@ -380,6 +380,17 @@ let t34 = performance.now();
 console.log(`Time Elapsed: ${(t34 - t33) / 1000} seconds.`)
 
 //7 - Capitalize Words
+function capitalizeFirst (array) {
+  if (array.length === 1) {
+    return [array[0][0].toUpperCase() + array[0].substr(1)];
+  }
+  const res = capitalizeFirst(array.slice(0, -1));
+  const string = array.slice(array.length - 1)[0][0].toUpperCase() + array.slice(array.length-1)[0].substr(1);
+  res.push(string);
+  return res;
+}
+
+
 
 //8 - Stringify Numbers
 
