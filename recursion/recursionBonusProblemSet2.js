@@ -380,15 +380,24 @@ let t34 = performance.now();
 console.log(`Time Elapsed: ${(t34 - t33) / 1000} seconds.`)
 
 //7 - Capitalize Words
-function capitalizeFirst (array) {
+function capitalizeWords (array) {
   if (array.length === 1) {
-    return [array[0][0].toUpperCase() + array[0].substr(1)];
+    return [array[0].toUpperCase()];
   }
-  const res = capitalizeFirst(array.slice(0, -1));
-  const string = array.slice(array.length - 1)[0][0].toUpperCase() + array.slice(array.length-1)[0].substr(1);
-  res.push(string);
+  let res = capitalizeWords(array.slice(0, -1));
+  res.push(array.slice(array.length-1)[0].toUpperCase());
   return res;
+ 
 }
+
+let words = ['i', 'am', 'learning', 'recursion'];
+// capitalizedWords(words); // ['I', 'AM', 'LEARNING', 'RECURSION']
+
+//Performance
+let t35 = performance.now();
+console.log(`Capitalize Words #1 Recursion is ${capitalizeWords(words)}`);
+let t36 = performance.now();
+console.log(`Time Elapsed: ${(t36 - t35) / 1000} seconds.`)
 
 
 
