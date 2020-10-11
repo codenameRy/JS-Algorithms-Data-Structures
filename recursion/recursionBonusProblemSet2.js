@@ -380,6 +380,11 @@ let t34 = performance.now();
 console.log(`Time Elapsed: ${(t34 - t33) / 1000} seconds.`)
 
 //7 - Capitalize Words
+/*
+Write a recursive function called capitalizeWords. Given an array of words, 
+return a new array containing each word capitalized.
+*/
+
 function capitalizeWords (array) {
   if (array.length === 1) {
     return [array[0].toUpperCase()];
@@ -387,7 +392,6 @@ function capitalizeWords (array) {
   let res = capitalizeWords(array.slice(0, -1));
   res.push(array.slice(array.length-1)[0].toUpperCase());
   return res;
- 
 }
 
 let words = ['i', 'am', 'learning', 'recursion'];
@@ -400,7 +404,135 @@ let t36 = performance.now();
 console.log(`Time Elapsed: ${(t36 - t35) / 1000} seconds.`)
 
 
-
 //8 - Stringify Numbers
+function stringifyNumbers(obj) {
+  var newObj = {};
+  for (var key in obj) {
+    if (typeof obj[key] === 'number') {
+      newObj[key] = obj[key].toString();
+    } else if (typeof obj[key] === 'object' && !Array.isArray(obj[key])) {
+      newObj[key] = stringifyNumbers(obj[key]);
+    } else {
+      newObj[key] = obj[key];
+    }
+  }
+  return newObj;
+}
+
+let obj = {
+    num: 1,
+    test: [],
+    data: {
+        val: 4,
+        info: {
+            isRight: true,
+            random: 66
+        }
+    }
+}
+
+
+// stringifyNumbers(obj)
+
+//Performance
+let t37 = performance.now();
+console.log(`Stringify #1 Recursion is ${stringifyNumbers(obj)}`);
+let t38 = performance.now();
+console.log(`Time Elapsed: ${(t38 - t37) / 1000} seconds.`)
+
+
+// {
+//     num: "1",
+//     test: [],
+//     data: {
+//         val: "4",
+//         info: {
+//             isRight: true,
+//             random: "66"
+//         }
+//     }
+// }
+
 
 //9 - Collect Strings
+
+//Solution 1 - Helper Method Recursion Version
+function collectStrings(obj) {
+  var stringsArr = [];
+
+  function gatherStrings(o) {
+      for(var key in o) {
+          if(typeof o[key] === 'string') {
+              stringsArr.push(o[key]);
+          }
+          else if(typeof o[key] === 'object') {
+              return gatherStrings(o[key]);
+          }
+      }
+  }
+
+  gatherStrings(obj);
+
+  return stringsArr;
+}
+
+const objNew = {
+  stuff: "foo",
+  data: {
+      val: {
+          thing: {
+              info: "bar",
+              moreInfo: {
+                  evenMoreInfo: {
+                      weMadeIt: "baz"
+                  }
+              }
+          }
+      }
+  }
+}
+
+// collectStrings(obj2) // ["foo", "bar", "baz"])
+
+//Performance
+let t39 = performance.now();
+console.log(`Collect Strings #1 Recursion with Helper Method is ${collectStrings(objNew)}`);
+let t40 = performance.now();
+console.log(`Time Elapsed: ${(t40 - t39) / 1000} seconds.`)
+
+//Solution 2 - Pure Recursion Version
+function collectStrings2(obj) {
+  var stringsArr = [];
+  for(var key in obj) {
+      if(typeof obj[key] === 'string') {
+          stringsArr.push(obj[key]);
+      }
+      else if(typeof obj[key] === 'object') {
+          stringsArr = stringsArr.concat(collectStrings(obj[key]));
+      }
+  }
+
+  return stringsArr;
+}
+
+const objNew2 = {
+  stuff: "foo",
+  data: {
+      val: {
+          thing: {
+              info: "bar",
+              moreInfo: {
+                  evenMoreInfo: {
+                      weMadeIt: "baz"
+                  }
+              }
+          }
+      }
+  }
+}
+
+//Performance
+let t41 = performance.now();
+console.log(`Collect Strings #2 Pure Recursion is ${collectStrings2(objNew2)}`);
+let t42 = performance.now();
+console.log(`Time Elapsed: ${(t42 - t41) / 1000} seconds.`)
