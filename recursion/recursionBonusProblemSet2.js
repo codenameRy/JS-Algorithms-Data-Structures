@@ -405,6 +405,12 @@ console.log(`Time Elapsed: ${(t36 - t35) / 1000} seconds.`)
 
 
 //8 - Stringify Numbers
+/*
+Write a function called stringifyNumbers which takes in an object and 
+finds all of the values which are numbers and converts them to strings. 
+Recursion would be a great way to solve this!
+*/
+
 function stringifyNumbers(obj) {
   var newObj = {};
   for (var key in obj) {
@@ -441,20 +447,13 @@ let t38 = performance.now();
 console.log(`Time Elapsed: ${(t38 - t37) / 1000} seconds.`)
 
 
-// {
-//     num: "1",
-//     test: [],
-//     data: {
-//         val: "4",
-//         info: {
-//             isRight: true,
-//             random: "66"
-//         }
-//     }
-// }
-
 
 //9 - Collect Strings
+
+/*
+Write a function called collectStrings which accepts an object and returns 
+an array of all the values in the object that have a typeof string
+*/
 
 //Solution 1 - Helper Method Recursion Version
 function collectStrings(obj) {
