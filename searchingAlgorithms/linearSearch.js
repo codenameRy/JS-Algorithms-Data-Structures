@@ -24,7 +24,7 @@ function linearNum(arr, num) {
     return -1
 }
 
-numArr2 = [ 5, 8, 1, 100, 12, 3, 12 ];
+numArr2 = [ 5, 8, 1, 100, 12, 3, 16, 30, 45, 1, 56, 40, 12 ];
 
 //Performance Test
 let t3 = performance.now();
@@ -36,16 +36,17 @@ console.log(`Time Elapsed: ${(t4 - t3) / 1000} seconds.`)
 
 function linearNumEach(arr, num) {
     for (let val of arr) {
-        if (val === num)  {
-            return arr.indexOf(num)
-        }
+        if (val === num) return arr.indexOf(num);
+        
     }
     return -1;
 }
 
+numArr3 = [ 5, 8, 1, 100, 12, 3, 16, 30, 45, 1, 56, 40, 12 ];
+
 //Performance Test
 let t7 = performance.now();
-console.log(linearNumEach(numArr2, 12))
+console.log(linearNumEach(numArr3, 12))
 let t8 = performance.now();
 console.log(`Time Elapsed: ${(t8 - t7) / 1000} seconds.`)
 
@@ -55,11 +56,11 @@ function linearNumNew(arr, num) {
     return arr.indexOf(num);
 }
 
-numArr3 = [ 5, 8, 1, 100, 12, 3, 12 ];
+numArr4 = [ 5, 8, 1, 100, 12, 3, 16, 30, 45, 1, 56, 40, 12 ];
 
 //Performance Test
 let t5 = performance.now();
-console.log(linearNumNew(numArr3, 12))
+console.log(linearNumNew(numArr4, 12))
 let t6 = performance.now();
 console.log(`Time Elapsed: ${(t6 - t5) / 1000} seconds.`)
 
