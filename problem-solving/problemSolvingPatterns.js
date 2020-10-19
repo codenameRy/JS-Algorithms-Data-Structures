@@ -222,11 +222,11 @@ countUniqueValues([]) // 0
 countUniqueValues([-2,-1,-1,0,1]) // 4
 */
 
-//Solution 1 - Frequency Counter Pattern For ... of and Object.keys
+//Solution 1 - Frequency Counter Pattern "For Of" and Object.keys
 function countUniqueValues(arr) {
     //Create counter 
     let valueCount = {};
-    //Loop through array with for ... of and count unique value
+    //Loop through array with "for Of" and count unique value
     for (let num of arr) {
         valueCount[num] = 1 + (valueCount[num] || 0);
     }
@@ -355,7 +355,7 @@ console.log(`Max Sub Array #2 - ${maxSubarraySumNew([1,2,5,2,8,1,5],4)}`) //17
 let t25 = performance.now();
 console.log(`Time Elapsed: ${(t25 - t24) / 1000} seconds.`)
 
-//Solution 3 - For ... of and Math.max
+//Solution 3 - "For Of" and Math.max
 //Time Complexity O(n)
 
 //The task is: find the contiguous subarray of arr with the maximal sum of items.

@@ -16,14 +16,14 @@ function sameFrequency(num1, num2) {
     //Create 2 counter variables
     let counter1 = {};
     let counter2 = {};
-    //Loop through 2 arrays with for ... of. Assign counter
+    //Loop through 2 arrays with "For Of" Assign counter
     for (let num of newNum1) {
          if (counter1[num] = (counter1[num] || 0) + 1);
     }
     for (let num of newNum2) {
         counter2[num] = (counter2[num] || 0) + 1;
     }
-    //Check two counters with for ... in
+    //Check two counters with "For In"
     for (let key in counter1) {
         //Check if key doesn't not compare between counter
         if (!(key in counter2)) {

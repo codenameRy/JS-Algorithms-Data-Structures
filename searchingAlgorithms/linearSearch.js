@@ -32,7 +32,24 @@ console.log(linearNum(numArr2, 12))
 let t4 = performance.now();
 console.log(`Time Elapsed: ${(t4 - t3) / 1000} seconds.`)
 
-//Solution 2
+//Solution 3 For Each
+
+function linearNumEach(arr, num) {
+    for (let val of arr) {
+        if (val === num)  {
+            return arr.indexOf(num)
+        }
+    }
+    return -1;
+}
+
+//Performance Test
+let t7 = performance.now();
+console.log(linearNumEach(numArr2, 12))
+let t8 = performance.now();
+console.log(`Time Elapsed: ${(t8 - t7) / 1000} seconds.`)
+
+//Solution 2 Index Of return
 
 function linearNumNew(arr, num) {
     return arr.indexOf(num);
