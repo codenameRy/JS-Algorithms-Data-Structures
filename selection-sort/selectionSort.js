@@ -12,16 +12,19 @@ If the "minimum" is not the value (index) you initially began with, swap the two
 Repeat this with the next element until the array is sorted. 
 */
 
-//Solution 1 - Incrementing
+//Solution 1 - Incrementing - Time Complexity O(N2)
 
 function selectionSort(arr) {
     for (let i = 0 ; i < arr.length; i++) {
-        let min = i;
+      //Store first element as smallest value  
+      let min = i;
         for (let j = i + 1; j < arr.length; j++) {
+            //If smaller number is found, designate the smaller number to be the new "minimum"
             if (arr[min] > arr[j]) {
                 min = j;
             }
         }
+        //If "minimum" is not the index value, swap the two values
         if (min !== i) {
             let temp = arr[i];
             arr[i] = arr[min];
@@ -37,7 +40,7 @@ console.log(`Bubble Sort Naive ${selectionSort([2,9,10,1])}`);
 let t2 = performance.now();
 console.log(`Time Elapsed: ${(t2 - t1) / 1000} seconds.`)
 
-//Solution 2 
+//Solution 2 - Time Complexity O(N2)
 function selectionSortNew(arr) {
     const swap = (arr, idx1, idx2) =>
       ([arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]]);
