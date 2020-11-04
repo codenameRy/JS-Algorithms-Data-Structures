@@ -26,3 +26,23 @@ let t1 = performance.now();
 console.log(`Insertion Sort Naive ${insertionSort([2,9,76,62,1,4])}`);
 let t2 = performance.now();
 console.log(`Time Elapsed: ${(t2 - t1) / 1000} seconds.`)
+
+//solution 2 - ES6 with While Loop
+function insertionSortES6(arr) {
+    for (let i = 1; i < arr.length; i++) {
+        let currentVal = arr[i];
+        let j = i - 1;
+        while (j >= 0 && arr[j] > currentVal) {
+            arr[j+1] = arr[j];
+            j = j - 1;
+        }
+        arr[j+1] = currentVal
+    }
+    return arr;
+}
+
+//Performance Test
+let t3 = performance.now();
+console.log(`Insertion Sort ES6 ${insertionSortES6([2,9,76,62,1,4])}`);
+let t4 = performance.now();
+console.log(`Time Elapsed: ${(t4 - t3) / 1000} seconds.`)
