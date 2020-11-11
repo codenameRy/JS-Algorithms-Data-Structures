@@ -44,7 +44,7 @@ function merge(left, right) {
 
 //Performance Test
 let t1 = performance.now();
-console.log(`Merge Sort Recursive #1 ${merge([1,50,10, 104], [2,14,99, 101])}`);
+console.log(`Merge Recursive Solution #1 ${merge([1,50,10, 104], [2,14,99, 101])}`);
 let t2 = performance.now();
 console.log(`Time Elapsed: ${(t2 - t1) / 1000} seconds.`)
 
@@ -59,7 +59,7 @@ function mergeNew(arr1, arr2) {
             results.push(arr1[i]);
             i++;
         } else {
-            results.push([arr2[j]]);
+            results.push(arr2[j]);
             j++;
         }
         
@@ -81,6 +81,6 @@ function mergeNew(arr1, arr2) {
 // console.log(merge([1,50, 10], [2,14,99, 101]))
 
 let t3 = performance.now();
-console.log(`Merge Sort Recursive ${mergeNew([1,50,10, 104], [2,14,99, 101])}`);
+console.log(`Merge Efficient Solution #2 ${mergeNew([1,50,10, 104], [2,14,99, 101])}`);
 let t4 = performance.now();
 console.log(`Time Elapsed: ${(t4 - t3) / 1000} seconds.`)
