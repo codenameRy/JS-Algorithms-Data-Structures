@@ -44,6 +44,43 @@ function merge(left, right) {
 
 //Performance Test
 let t1 = performance.now();
-console.log(`Merge Sort Recursive ${merge([1,50, 10], [2,14,99, 101])}`);
+console.log(`Merge Sort Recursive #1 ${merge([1,50,10, 104], [2,14,99, 101])}`);
 let t2 = performance.now();
 console.log(`Time Elapsed: ${(t2 - t1) / 1000} seconds.`)
+
+//Solution 2 - More Efficient Solution - Time Complexity O(n + m)
+function mergeNew(arr1, arr2) {
+    let results = [];
+    let i = 0;
+    let j = 0;
+    //Merge values into results array in order as much as possible for the first array
+    while (i < arr1.length && j < arr2.length) {
+        if (arr2[j] > arr1[i]) {
+            results.push(arr1[i]);
+            i++;
+        } else {
+            results.push([arr2[j]]);
+            j++;
+        }
+        
+    }
+
+    //Merge values that are remaining in the second array
+    while (i < arr1.length) {
+        results.push(arr1[i]);
+        i++;
+    }
+
+    while (j < arr2.length) {
+        results.push(arr2[j]);
+        j++;
+    }
+    return results;
+}
+
+// console.log(merge([1,50, 10], [2,14,99, 101]))
+
+let t3 = performance.now();
+console.log(`Merge Sort Recursive ${mergeNew([1,50,10, 104], [2,14,99, 101])}`);
+let t4 = performance.now();
+console.log(`Time Elapsed: ${(t4 - t3) / 1000} seconds.`)
