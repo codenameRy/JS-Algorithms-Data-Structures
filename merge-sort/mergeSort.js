@@ -84,3 +84,5 @@ let t3 = performance.now();
 console.log(`Merge Efficient Solution #2 ${mergeNew([1,50,10, 104], [2,14,99, 101])}`);
 let t4 = performance.now();
 console.log(`Time Elapsed: ${(t4 - t3) / 1000} seconds.`)
+
+//MergeSort Pseudocode
