@@ -2,11 +2,11 @@ const { performance } = require('perf_hooks');
 
 //Pivot Helper / Partition
 
-let arr = [ 5, 2, 1, 8, 4, 7, 6, 3 ]
+// let arr = [ 5, 2, 1, 8, 4, 7, 6, 3 ]
 
-pivot(arr); // 4;
+// pivot(arr); // 4;
 
-arr;
+// arr;
 // any one of these is an acceptable mutation:
 // [2, 1, 4, 3, 5, 8, 7, 6]
 // [1, 4, 3, 2, 5, 7, 6, 8]
@@ -42,15 +42,19 @@ function pivot(arr, start=0, end=arr.length+1){
     for(var i = start + 1; i < arr.length; i++){
       if(pivot > arr[i]){
         swapIdx++;
-        swap(arr,swapIdx,i);
+        swap(arr,swapIdx,i)
+        
       }
     }
     swap(arr,start,swapIdx);
+    console.log(arr)
     return swapIdx;
-  }
+    }
+
+pivot([4,8,2,1,5,7,6,3]);
   
   // Version with ES2015 Syntax
-  function pivot(arr, start = 0, end = arr.length - 1) {
+  function pivot1(arr, start = 0, end = arr.length - 1) {
     const swap = (arr, idx1, idx2) => {
       [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
     };
@@ -62,8 +66,8 @@ function pivot(arr, start=0, end=arr.length+1){
     for (let i = start + 1; i <= end; i++) {
       if (pivot > arr[i]) {
         swapIdx++;
-        swap(arr, swapIdx, i);
-        console.log(arr)
+        swap(arr, swapIdx, i)
+        
       }
     }
   
@@ -72,10 +76,10 @@ function pivot(arr, start=0, end=arr.length+1){
     return swapIdx;
   }
   
-  // pivot([4,8,2,1,5,7,6,3])
+ 
 
   //Performance Test
 let t1 = performance.now();
-console.log(`Pivot Helper Function ${pivot([1,50,10, 104, 2,14,99, 101])}`);
+console.log(`Pivot Helper Function ${pivot1([1,50,10, 104, 2,14,99, 101])}`);
 let t2 = performance.now();
 console.log(`Time Elapsed: ${(t2 - t1) / 1000} seconds.`)
