@@ -42,7 +42,9 @@ function quickSort(arr, left = 0, right = arr.length - 1) {
         //right
         quickSort(arr, pivotIndex + 1, right);
     }
+    console.log(arr)
     return arr;
+    
 }
 
 // console.log(quickSort([4,1,8,6,2,7,5,3]));
