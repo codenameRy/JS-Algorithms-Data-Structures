@@ -48,7 +48,7 @@ function quickSort(arr, left = 0, right = arr.length - 1) {
     return arr;
     
 }
-
+// var 
 // console.log(quickSort([4,1,8,6,2,7,5,3]));
 
 //   //Performance Test
@@ -59,7 +59,7 @@ function quickSort(arr, left = 0, right = arr.length - 1) {
 
   //Solution 2 - Middle Element as Pivot Index
 
-//   var items = [4,1,8,6,2,7,5,3];
+  var items = [4,1,8,6,2,7,5,3];
 function swap(items, leftIndex, rightIndex){
     var temp = items[leftIndex];
     items[leftIndex] = items[rightIndex];
@@ -90,16 +90,16 @@ function quickSortNew(items, left = 0, right = items.length - 1) {
     if (items.length > 1) {
         index = partition(items, left, right); //index returned from partition
         if (left < index - 1) { //more elements on the left side of the pivot
-            quickSort(items, left, index - 1);
+            quickSortNew(items, left, index - 1);
         }
         if (index < right) { //more elements on the right side of the pivot
-            quickSort(items, index, right);
+            quickSortNew(items, index, right);
         }
     }
     return items;
 }
 // first call to quick sort
-var sortedArray = quickSort([4,1,8,6,2,7,5,3]);
+var sortedArray = quickSortNew();
 console.log(sortedArray);
 
 //   //Performance Test
