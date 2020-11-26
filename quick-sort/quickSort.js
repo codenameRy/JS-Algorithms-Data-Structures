@@ -12,6 +12,7 @@ with less than 2 elements
 
 */
 
+//Solution 1 - First Element as Pivot Index
 //Pivot Helper Function
 
 function pivot(arr, start = 0, end = arr.length - 1) {
@@ -33,6 +34,7 @@ function pivot(arr, start = 0, end = arr.length - 1) {
 }
 
 function quickSort(arr, left = 0, right = arr.length - 1) {
+    //Base case
     if (left < right) {
         let pivotIndex = pivot(arr, left, right) //3
 
@@ -42,7 +44,7 @@ function quickSort(arr, left = 0, right = arr.length - 1) {
         //right side
         quickSort(arr, pivotIndex + 1, right);
     }
-    console.log(arr)
+    // console.log(arr)
     return arr;
     
 }
@@ -51,7 +53,58 @@ function quickSort(arr, left = 0, right = arr.length - 1) {
 
 //   //Performance Test
   let t1 = performance.now();
-  console.log(`Pivot Helper Function ${quickSort([4,1,8,6,2,7,5,3])}`);
+  console.log(`Quick Sort function #1 - First element Pivot ${quickSort([4,1,8,6,2,7,5,3])}`);
   let t2 = performance.now();
   console.log(`Time Elapsed: ${(t2 - t1) / 1000} seconds.`)
+
+  //Solution 2 - Middle Element as Pivot Index
+
+//   var items = [4,1,8,6,2,7,5,3];
+function swap(items, leftIndex, rightIndex){
+    var temp = items[leftIndex];
+    items[leftIndex] = items[rightIndex];
+    items[rightIndex] = temp;
+}
+function partition(items, left, right) {
+    var pivot   = items[Math.floor((right + left) / 2)], //middle element
+        i       = left, //left pointer
+        j       = right; //right pointer
+    while (i <= j) {
+        while (items[i] < pivot) {
+            i++;
+        }
+        while (items[j] > pivot) {
+            j--;
+        }
+        if (i <= j) {
+            swap(items, i, j); //sawpping two elements
+            i++;
+            j--;
+        }
+    }
+    return i;
+}
+
+function quickSortNew(items, left = 0, right = items.length - 1) {
+    var index;
+    if (items.length > 1) {
+        index = partition(items, left, right); //index returned from partition
+        if (left < index - 1) { //more elements on the left side of the pivot
+            quickSort(items, left, index - 1);
+        }
+        if (index < right) { //more elements on the right side of the pivot
+            quickSort(items, index, right);
+        }
+    }
+    return items;
+}
+// first call to quick sort
+var sortedArray = quickSort([4,1,8,6,2,7,5,3]);
+console.log(sortedArray);
+
+//   //Performance Test
+let t3 = performance.now();
+console.log(`Quick Sort function #2 - Middle element pivot ${sortedArray}`);
+let t4 = performance.now();
+console.log(`Time Elapsed: ${(t4 - t3) / 1000} seconds.`)
 
