@@ -85,7 +85,7 @@ function partition(items, left, right) {
     return i;
 }
 
-function quickSortNew(items, left = 0, right = items.length - 1) {
+function quickSortNew(items, left, right) {
     var index;
     if (items.length > 1) {
         index = partition(items, left, right); //index returned from partition
@@ -99,7 +99,7 @@ function quickSortNew(items, left = 0, right = items.length - 1) {
     return items;
 }
 // first call to quick sort
-var sortedArray = quickSortNew();
+var sortedArray = quickSortNew(items, 0, items.length - 1);
 console.log(sortedArray);
 
 //   //Performance Test
