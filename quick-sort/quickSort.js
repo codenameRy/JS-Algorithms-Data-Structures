@@ -53,13 +53,13 @@ function quickSort(arr, left = 0, right = arr.length - 1) {
 
 //   //Performance Test
   let t1 = performance.now();
-  console.log(`Quick Sort function #1 - First element Pivot ${quickSort([4,1,8,6,2,7,5,3])}`);
+  console.log(`Quick Sort function #1 - First element Pivot ${quickSort([4,1,8,6,2,7,5,10,3,21])}`);
   let t2 = performance.now();
   console.log(`Time Elapsed: ${(t2 - t1) / 1000} seconds.`)
 
   //Solution 2 - Middle Element as Pivot Index
 
-  var items = [4,1,8,6,2,7,5,3];
+  var items = [4,1,8,6,2,7,5,10,3,21];
 function swap(items, leftIndex, rightIndex){
     var temp = items[leftIndex];
     items[leftIndex] = items[rightIndex];
