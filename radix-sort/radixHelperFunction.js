@@ -4,8 +4,12 @@
 // getDigit(num, place) - returns the digit in num at the given place value
 
 function getDigit(num, i) {
+  //Absolute Value for positive or negative numbers
+  //Divide by 10 by the power of i
   return Math.floor(Math.abs(num) / Math.pow(10, i)) % 10;
 }
+
+console.log(`Get Digit ${getDigit(7234, 0)}`)
 
 function digitCount(num) {
   if (num === 0) return 1;
