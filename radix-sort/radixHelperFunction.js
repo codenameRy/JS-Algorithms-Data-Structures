@@ -16,6 +16,8 @@ function digitCount(num) {
   return Math.floor(Math.log10(Math.abs(num))) + 1;
 }
 
+console.log(`Digit Count ${digitCount(7234)}`)
+
 function mostDigits(nums) {
   let maxDigits = 0;
   for (let i = 0; i < nums.length; i++) {
