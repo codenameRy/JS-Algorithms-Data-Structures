@@ -56,4 +56,4 @@ return list at the end!*/
 
 
 
-  console.log(`Radix Sort ${radixSort([280,42, 8421, 200383, 12,102])}`)
+  console.log(`Radix Sort ${radixSort([280,42, 8012, 200383, 12,102])}`)
