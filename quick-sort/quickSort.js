@@ -49,7 +49,7 @@ function quickSort(arr, left = 0, right = arr.length - 1) {
     
 }
 // var 
-// console.log(quickSort([4,1,8,6,2,7,5,3]));
+// console.log(quickSorty([4,1,8,6,2,7,5,3]));
 
 //   //Performance Test
 let t1 = performance.now();
