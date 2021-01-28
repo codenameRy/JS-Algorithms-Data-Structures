@@ -44,7 +44,7 @@ function quickSort(arr, left = 0, right = arr.length - 1) {
         //right side
         quickSort(arr, pivotIndex + 1, right);
     }
-    // console.log(arr)
+    // console.log(arr1)
     return arr;
     
 }
