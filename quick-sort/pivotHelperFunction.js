@@ -28,7 +28,7 @@ Swap the starting element (i.e. the pivot) with the pivot index
 Return the pivot index
 */
 
-// First Version
+// First Versions
 function pivot(arr, start=0, end=arr.length+1){
     function swap(array, i, j) {
       var temp = array[i];
