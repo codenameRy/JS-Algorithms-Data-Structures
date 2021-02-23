@@ -25,7 +25,7 @@ Loop through the array from the start until the end
 If the pivot is greater than the current element, increment the pivot index variable 
 and then swap the current element with the element at the pivot index
 Swap the starting element (i.e. the pivot) with the pivot index
-Return the pivot index
+Return the pivot index #2
 */
 
 // First Versions
