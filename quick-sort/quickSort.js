@@ -57,7 +57,7 @@ console.log(`Quick Sort function #1 - First element Pivot ${quickSort([4,1,8,6,2
 let t2 = performance.now();
 console.log(`Time Elapsed: ${(t2 - t1) / 1000} seconds.`)
 
-  //Solution 2 - Middle Element as Pivot Index
+  //Solution 2 - Middle Element as Pivot Index New
 
 //   var items = [4,1,8,6,2,7,5,10,3,21];
   var items = [280, 42, 8012, 200383, 12, 102, 7821];
