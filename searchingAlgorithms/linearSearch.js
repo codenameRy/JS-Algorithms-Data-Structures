@@ -32,7 +32,7 @@ console.log(linearNum(numArr2, 12))
 let t4 = performance.now();
 console.log(`Time Elapsed: ${(t4 - t3) / 1000} seconds.`)
 
-//Solution 3 For Each
+//Solution 3 For Each Solution
 
 function linearNumEach(arr, num) {
     for (let val of arr) {
